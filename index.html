@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SASHTIKA S | Portfolio</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://unicons.iconscout.com/release/v4.0.8/css/line.css" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #d1bfca 0%, #c7a7bb  50%, #f0e6ff 100%);
+      color: #222;
+      overflow-x: hidden;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+    }
+
+    header {
+      background: rgba(155, 126, 145, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 30px rgba(0,0,0,0.06);
+      position: fixed;
+      width: 100%;
+      top: 0;
+      z-index: 999;
+    }
+
+    .navbar {
+      padding: 1rem 8%;
+    }
+
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #401f86;
+    }
+
+    .nav-link {
+      font-weight: 500;
+      color: #333 !important;
+      margin-right: 20px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      bottom: -4px;
+      left: 0;
+      background: #401f86;
+      transition: width 0.3s;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    .btn-accent {
+      background: linear-gradient(90deg,#401f86, #e045ff);
+      color: #fff;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 22px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .btn-accent:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(123, 63, 255, 0.4);
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 180px 8% 100px;
+      flex-wrap: wrap;
+      gap: 40px;
+    }
+
+    .hero-content {
+      flex: 1 1 500px;
+      animation: fadeInLeft 1.2s ease;
+    }
+
+    @keyframes fadeInLeft {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #222;
+    }
+
+    .hero-content h1 span {
+      color:#401f86;
+    }
+
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 500px;
+      margin: 15px 0 25px;
+    }
+
+    .hero-image {
+      flex: 1 1 400px;
+      display: flex;
+      justify-content: center;
+      animation: fadeInRight 1.2s ease;
+    }
+
+    @keyframes fadeInRight {
+      0% { opacity: 0; transform: translateX(50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+
+    .hero-image img {
+      width: 320px;
+      border-radius: 20px;
+      padding: 12px;
+      background: rgba(255,255,255,0.6);
+      box-shadow: 0 12px 36px rgba(0,0,0,0.08);
+      backdrop-filter: blur(10px);
+    }
+
+    .tagline {
+      color: #401f86;
+      font-weight: 600;
+      font-size: 1.3rem;
+      min-height: 35px;
+      display: inline-block;
+      overflow: hidden;
+      border-right: 3px solid #401f86;
+      white-space: nowrap;
+      animation: typing 4s steps(20, end) infinite alternate;
+    }
+
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+
+    section {
+      scroll-margin-top: 100px;
+      min-height: 100vh;
+      display: block;
+      position: relative;
+      transition: opacity 400ms ease, transform 400ms ease;
+    }
+
+    .section-card {
+      background: rgba(255, 255, 255, 0.55);
+      border: 1px solid rgba(255,255,255,0.5);
+      box-shadow: 0 10px 30px rgba(15,15,15,0.06);
+      backdrop-filter: blur(12px) saturate(120%);
+      border-radius: 16px;
+      margin: 100px 10%;
+      padding: 60px;
+    }
+
+    .section-card h2 {
+      color: #4b2be3;
+      font-weight: 700;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 40px;
+      color: #555;
+    }
+
+    /* === ABOUT SECTION === */
+    #about {
+      background: linear-gradient(135deg, rgba(245, 247, 250, 0.4) 0%, rgba(255, 255, 255, 0.5) 50%, rgba(240, 230, 255, 0.4) 100%) !important;
+      border: 2px solid rgba(122, 62, 255, 0.15) !important;
+      box-shadow: 0 20px 60px rgba(75, 43, 227, 0.12);
+      backdrop-filter: blur(25px) saturate(130%) !important;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #about h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+      background: linear-gradient(135deg,  #401f86 0%, #401f86 50%, #e045ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    #about > p {
+      background: rgba(255, 255, 255, 0.6);
+      padding: 30px 40px;
+      border-radius: 18px;
+      border-left: 4px solid #401f86;
+      max-width: 750px;
+      text-align: left;
+      margin: 0 auto 50px;
+      box-shadow: 0 8px 32px rgba(75, 43, 227, 0.1);
+    }
+
+    .about-container {
+      max-width: 1020px;
+      margin: 50px auto;
+      padding: 0 20px;
+    }
+
+    .about-cards {
+      display: grid;
+      grid-template-columns: repeat(4, 220px);
+      gap: 35px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-card {
+      width: 220px;
+      height: 220px;
+      position: relative;
+      background: rgba(255, 255, 255, 0.65);
+      border: 1.5px solid rgba(255, 255, 255, 0.85);
+      border-left: 4px solid #3f227e;
+      border-radius: 22px;
+      transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      overflow: hidden;
+      box-shadow: 0 10px 40px rgba(75, 43, 227, 0.12);
+      display: block;
+    }
+
+    .flip-card {
+      perspective: 1000px;
+      width: 100%;
+      height: 100%;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.75s cubic-bezier(.2,.8,.2,1);
+      transform-style: preserve-3d;
+    }
+
+    .about-card:hover .flip-card-inner,
+    .about-card:focus-within .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-face {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 22px;
+    }
+
+    .flip-front {
+      background: rgba(255,255,255,0.65);
+    }
+
+    .flip-back {
+      transform: rotateY(180deg);
+      background: linear-gradient(135deg, rgba(122,62,255,0.06), rgba(224,69,255,0.04));
+      color: #222;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .flip-back p {
+      margin: 0;
+      font-size: 0.95rem;
+      line-height: 1.4;
+    }
+
+    .about-card img {
+      width: 70px;
+      height: 70px;
+      margin-bottom: 15px;
+      filter: drop-shadow(0 6px 20px rgba(75, 43, 227, 0.25));
+      transition: all 0.5s ease;
+    }
+
+    .about-card h4 {
+      font-weight: 700;
+      color: #401f86;
+      font-size: 1.1rem;
+      margin: 0;
+    }
+
+    @media (max-width: 1020px) {
+      .about-cards {
+        grid-template-columns: repeat(2, 220px);
+      }
+    }
+    
+    @media (max-width: 520px) {
+      .about-container { max-width: 320px; }
+      .about-cards { grid-template-columns: 1fr; gap: 20px; }
+      .about-card { width: 100%; height: auto; padding: 24px; }
+      .about-card img { width: 56px; height: 56px; }
+      .flip-face { position: relative; transform: none; }
+      .flip-card-inner { transform: none !important; }
+    }
+
+    @media (max-width: 768px) {
+      .about-cards {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .about-card {
+        width: 160px;
+        height: 160px;
+      }
+      .about-card img {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    /* === ACHIEVEMENTS SECTION === */
+    .achievements-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 30px;
+      margin: 40px auto;
+      max-width: 1100px;
+    }
+
+    .achievement-card {
+      display: flex;
+      align-items: flex-start;
+      gap: 20px;
+      background: rgba(255, 255, 255, 0.55);
+      border: 1.5px solid rgba(255, 255, 255, 0.7);
+      border-left: 4px solid #401f86;
+      border-radius: 16px;
+      padding: 30px;
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 8px 24px rgba(75, 43, 227, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    .achievement-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 40px rgba(75, 43, 227, 0.2);
+      border-left-color: #e045ff;
+    }
+
+    .achievement-icon {
+      flex-shrink: 0;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(135deg, #401f86, #e045ff);
+      border-radius: 14px;
+      font-size: 2rem;
+      color: #fff;
+      box-shadow: 0 6px 20px rgba(64, 31, 134, 0.25);
+      transition: all 0.3s ease;
+    }
+
+    .achievement-card:hover .achievement-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 28px rgba(224, 69, 255, 0.4);
+    }
+
+    .achievement-content h4 {
+      font-weight: 700;
+      color: #401f86;
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+    }
+
+    .achievement-content p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    @media (max-width: 768px) {
+      .achievements-container {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .achievement-card {
+        padding: 24px;
+      }
+
+      .achievement-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 1.6rem;
+      }
+
+      .achievement-content h4 {
+        font-size: 1.1rem;
+      }
+
+      .achievement-content p {
+        font-size: 0.9rem;
+      }
+    }
+
+    /* === Social Links Styling === */
+    .social-links {
+      display: flex;
+      gap: 20px;
+      margin-top: 25px;
+    }
+
+    .social-icon {
+      width: 44px;
+      height: 44px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50%;
+      font-size: 1.5rem;
+      background: rgba(255, 255, 255, 0.4);
+      color: #401f86;
+      box-shadow: 0 4px 14px rgba(64, 31, 134, 0.1);
+      backdrop-filter: blur(6px);
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .social-icon:hover {
+      background: linear-gradient(135deg, #401f86, #e045ff);
+      color: #fff;
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 6px 20px rgba(123, 63, 255, 0.3);
+    }
+    #education h2{
+       color: #401f86;
+    }
+#achievements h2 {
+  color: #401f86 ;
+}
+#contact h2{
+  color: #401f86 ;
+}
+
+
+    /* ===== Education Timeline Section ===== */
+    .education-container.glass-card {
+      background: rgba(255, 255, 255, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      box-shadow: 0 10px 30px rgba(64, 31, 134, 0.2);
+      backdrop-filter: blur(15px) saturate(150%);
+      border-radius: 20px;
+      padding: 60px 40px;
+      margin: 50px auto;
+      max-width: 950px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .timeline {
+      position: relative;
+      margin: 0;
+      padding: 0;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      width: 18px;
+      height: 18px;
+      background: radial-gradient(circle at center,#401f86 0%, #401f86 90%);
+      border: 3px solid rgba(255, 255, 255, 0.7);
+      border-radius: 50%;
+      top: 35px;
+      z-index: 2;
+      box-shadow: 0 0 12px rgba(78, 35, 107, 0.6);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .timeline-item.left::before {
+      right: -9px;
+    }
+
+    .timeline-item.right::before {
+      left: -9px;
+    }
+
+    .timeline-item:hover::before {
+      transform: scale(1.2);
+      box-shadow: 0 0 20px rgba(224, 69, 255, 0.9);
+    }
+
+    .timeline::after {
+      content: '';
+      position: absolute;
+      width: 4px;
+      background: linear-gradient(180deg, #401f86 0%, #401f86 100%);
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      margin-left: -2px;
+      border-radius: 10px;
+      box-shadow: 0 0 12px rgba(224, 69, 255, 0.5);
+    }
+
+    .timeline-item {
+      width: 50%;
+      position: relative;
+      padding: 20px 30px;
+    }
+
+    .timeline-item.left { left: 0; }
+    .timeline-item.right { left: 50%; }
+
+    .timeline-content {
+      position: relative;
+      border-radius: 18px;
+      padding: 20px 25px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255,255,255,0.15);
+      border-left: 4px solid #401f86;
+      backdrop-filter: blur(10px);
+      transition: all 0.3s ease;
+      box-shadow: 0 6px 18px rgba(64,31,134,0.15);
+    }
+
+    .timeline-content:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 28px rgba(64,31,134,0.25), 0 0 12px rgba(64,31,134,0.3);
+    }
+
+    .timeline-content h4 {
+      color: #401f86;
+      font-weight: 600;
+    }
+
+    .timeline-content h6 {
+      color: #7c3eff;
+      font-weight: 500;
+    }
+
+    .timeline-content p {
+      color: #222;
+      margin-bottom: 0;
+    }
+    #tagline {
+  border-right: 3px solid #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  display: inline-block;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+#contact h2 {
+  font-size: 2.4rem;
+  text-align: center;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+#contact h2::after {
+  content: "★";
+  display: block;
+  font-size: 1.2rem;
+  margin: 10px auto 0;
+  color: #401f86;
+}
+
+#contact .form-control {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(6px);
+}
+
+#contact .form-control:focus {
+  border-color: #401f86;
+  box-shadow: 0 0 8px rgba(64,31,134,0.2);
+}
+.nav-link.active::after {
+  width: 100%;
+}
+
+
+  </style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-lg">
+      <a class="navbar-brand" href="#home">SASHTIKA S</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+          <li class="nav-item"><a class="nav-link" href="#achievements">Achievements</a></li>
+      
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          <li class="nav-item"><a class="btn-accent ms-3" href="#contact">Say Hello!</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h1>Hello, I'm <span>SASHTIKA S</span></h1>
+      <div class="tagline" id="tagline"></div>
+      <p>A passionate Data Analyst and Developer who loves crafting intelligent digital solutions with creativity, precision, and clean design.</p>
+
+      <div class="social-links mt-4">
+        <a href="mailto:sastheekas@gmail.com" target="_blank" class="social-icon">
+          <i class="uil uil-envelope"></i>
+        </a>
+        <a href="https://github.com/SashtikaSenthil" target="_blank" class="social-icon">
+          <i class="uil uil-github-alt"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/sashtika-s-b45ba32bb?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app " target="_blank" class="social-icon">
+          <i class="uil uil-linkedin"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="assets/profile.jpg" alt="Sashtika Photo">
+    </div>
+  </section>
+
+  <section id="about" class="section-card">
+    <h2>About</h2>
+    <p>I am a dedicated engineering student with hands-on experience in Frontend , Backend , Visualization . I have contributed to projects like the Network Tracker Web Application, where I enhanced user experience and implemented dynamic interfaces. I thrive on challenges, love learning new technologies, and aim to build impactful solutions that combine functionality with creativity.</p>
+  
+    <div class="about-container">
+      <div class="about-cards">
+        <div class="about-card" tabindex="0">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <img src="assets/Front-end-logo-color_2x-removebg-preview.png" alt="Frontend Developer">
+                <h4>Frontend Developer</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <p><strong>Frontend</strong><br> HTML · CSS · JavaScript · React js</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card" tabindex="0">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <img src="assets/backend-development-icon-vector-removebg-preview.png" alt="Backend Developer">
+                <h4>Backend Developer</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <p><strong>Backend</strong><br> Flask · REST APIs · SQL (MariaDB) · Authentication</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card" tabindex="0">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <img src="assets/artificial-intelligence-chipic-on-png-removebg-preview.png" alt="AI Engineer">
+                <h4>AI Engineer</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <p><strong>AI & Data</strong><br>Python · Machine Learning · Data Analysis · TensorFlow</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="about-card" tabindex="0">
+          <div class="flip-card">
+            <div class="flip-card-inner">
+              <div class="flip-face flip-front">
+                <img src="assets/4824797-removebg-preview.png" alt="Data Scientist">
+                <h4>Data Scientist</h4>
+              </div>
+              <div class="flip-face flip-back">
+                <p><strong>Data Scientist</strong><br>Python · R Studio · IBM Watson Studio · Data Visualization · Statistical Analysis · Pandas · NumPy</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="education" class="section-card">
+    <h2>Education</h2>
+    <div class="education-container glass-card">
+      <div class="timeline">
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h4>Bachelor of Technology- Artificial Intelligence and Data Science </h4>
+            <h6>2025 - Present | M.Kumarasamy College of Engineering </h6>
+            <p>Currently pursuing Artificial Intelligence and Data Science, focusing on data analytics, AI-driven systems, and modern web application development.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item left">
+          <div class="timeline-content">
+            <h4>Higher Secondary Education</h4>
+            <h6>2022 - 2024 | Shri Vidhya Mandhir (CBSE) </h6>
+            <p>Completed higher secondary education with a major focus in Computer Science, building foundational knowledge in programming and data handling.</p>
+          </div>
+        </div>
+
+        <div class="timeline-item right">
+          <div class="timeline-content">
+            <h4>Secondary School Education</h4>
+            <h6>2021 - 2022 | Shri Vidhya Mandhir (CBSE) </h6>
+            <p>Achieved strong academic performance and developed a keen interest in technology and innovation, leading toward a career in engineering.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements" class="section-card">
+    <h2>Achievements</h2>
+    <div class="achievements-container">
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="uil uil-google"></i>
+        </div>
+        <div class="achievement-content">
+          <h4>Google Student Ambassador</h4>
+          <p>Selected as a Google Student Ambassador, promoting Google technologies and organizing tech events within the campus community.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="uil uil-award"></i>
+        </div>
+        <div class="achievement-content">
+          <h4>Student of the Month</h4>
+          <p>Recognized as Student of the Month at M Kumarasamy College of Engineering for September 2025 for outstanding academic and extracurricular performance.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="uil uil-briefcase-alt"></i>
+        </div>
+        <div class="achievement-content">
+          <h4>Internship at AI FUTURIX INNOVOLABZ</h4>
+          <p>Completed internship contributing to the Network Tracker Web Application, gaining hands-on experience in full-stack development and database management.</p>
+        </div>
+      </div>
+
+      <div class="achievement-card">
+        <div class="achievement-icon">
+          <i class="uil uil-trophy"></i>
+        </div>
+        <div class="achievement-content">
+          <h4>Unstop Hackathon Participation</h4>
+          <p>Actively participated in Unstop hackathons, collaborating with teams to develop innovative solutions to real-world problems.</p>
+        </div>
+      </div>
+
+  </section>
+
+  
+
+ 
+   <section id="contact" class="section-card" style="max-width: 800px; margin: 120px auto;">
+  <h2>Contact Me</h2>
+
+  <form 
+    action="https://formsubmit.co/sastheekasemail@gmail.com" 
+    method="POST" 
+    style="margin-top: 40px;"
+  >
+
+    <!-- FIRST NAME -->
+    <div class="mb-4">
+      <label class="form-label fw-bold">First Name <span style="color:red">*</span></label>
+      <input type="text" class="form-control" placeholder="Enter your first name" required>
+    </div>
+
+    <!-- LAST NAME -->
+    <div class="mb-4">
+      <label class="form-label fw-bold">Last Name <span style="color:red">*</span></label>
+      <input type="text" class="form-control" placeholder="Enter your last name" required>
+    </div>
+
+    <!-- EMAIL -->
+    <div class="mb-4">
+      <label class="form-label fw-bold">Email Address <span style="color:red">*</span></label>
+      <input type="email" class="form-control" placeholder="Enter your email" required>
+    </div>
+
+    <!-- MESSAGE -->
+    <div class="mb-4">
+      <label class="form-label fw-bold">Comments / Questions <span style="color:red">*</span></label>
+      <textarea class="form-control" rows="5" placeholder="Type your message here..." required></textarea>
+    </div>
+
+    <!-- BUTTON -->
+    <button type="submit" class="btn-accent">
+      Send Message
+    </button>
+
+  </form>
+</section>
+
+    
+
+
+  <footer>SASHTIKA S © 2025</footer>
+
+  <script>
+const taglines = [
+  "Aspiring Data Analyst",
+  "AI Engineer",
+  "Web Developer",
+  "Creative Thinker"
+];
+
+let taglineElement = document.getElementById("tagline");
+let taglineIndex = 0;
+let charIndex = 0;
+let typingSpeed = 100;     // typing speed
+let erasingSpeed = 60;     // erasing speed
+let pauseBeforeErase = 2000; // 2 seconds pause after typing
+let pauseBeforeNext = 500; // small pause before typing next tagline
+
+function typeTagline() {
+  let current = taglines[taglineIndex];
+  if (charIndex < current.length) {
+    taglineElement.textContent += current.charAt(charIndex);
+    charIndex++;
+    setTimeout(typeTagline, typingSpeed);
+  } else {
+    setTimeout(eraseTagline, pauseBeforeErase); // wait 2s before erasing
+  }
+}
+
+function eraseTagline() {
+  let current = taglines[taglineIndex];
+  if (charIndex > 0) {
+    taglineElement.textContent = current.substring(0, charIndex - 1);
+    charIndex--;
+    setTimeout(eraseTagline, erasingSpeed);
+  } else {
+    taglineIndex = (taglineIndex + 1) % taglines.length; // move to next
+    setTimeout(typeTagline, pauseBeforeNext);
+  }
+}
+
+// Start typing when page loads
+document.addEventListener("DOMContentLoaded", () => {
+  typeTagline();
+});
+</script>
+<script>
+// Highlight navbar links on scroll
+const sections = document.querySelectorAll("section");
+const navLinks = document.querySelectorAll(".nav-link");
+
+window.addEventListener("scroll", () => {
+  let current = "";
+
+  sections.forEach((section) => {
+    const sectionTop = section.offsetTop - 120; // offset for header
+    const sectionHeight = section.clientHeight;
+
+    if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+      current = section.getAttribute("id");
+    }
+  });
+
+  navLinks.forEach((link) => {
+    link.classList.remove("active");
+
+    if (link.getAttribute("href") === `#${current}`) {
+      link.classList.add("active");
+    }
+  });
+});
+</script>
+
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
